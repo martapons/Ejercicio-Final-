@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <link href="style.css" rel="stylesheet" type="text/css">
+        <script src="form.js"></script>
+        <title>EJERCICIO FINAL</title>
+
+</head>
+ <body> 
+  
+    <form action="./procesarFormulario.php" class="formulario" id="formulario"> 
+
+        <h1>Formulario Información de Alta Telefónica</h1>
+
+        <div class="formulario_grupo" id="grupo_personales">
+        <fieldset>
+    
+          <legend><b>Datos Personales</b></legend>
+    
+            Nombre:<input type="text" name="nombre" id="nombre" maxlength="30" placeholder="Inserte su nombre" required/><br/>
+            Apellidos:<input type="text" name="apellidos" id="apellidos" maxlength="60" placeholder="Inserte sus apellidos" required/><br/>
+            Dirección:<input type="text" name="dirección" id="direccion" maxlength="60" placeholder="Insterte una dirección" required/><br/>
+            Código Postal:<input type="text" name="cpostal" pattern="[0-9]{5}" id="entradacp" placeholder="00000" required/>
+            <span class="error" id="da-error"></span><br/>
+            Localidad:<input type="text" name="provincia" id="salidaprovincia" placeholder="Inserte localidad" required/><span class="correct" id="da-correct"></span><br/>
+    
+        </fieldset>
+        </div>
+        <br/>
+        
+        <div class="formulario_grupo" id="grupo_contratacion">
+        <fieldset> 
+        
+            <legend><b>Tipo de Contratación</b></legend>
+    
+            <input type="radio" name="tipoc" value="nuevo" checked="checked">Nueva Contratación&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="tipoc" value="porta">Portabilidad&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="tipoc" value="cambio">Cambio de Contrato&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <br/><br/>
+                Elige la compañía actual:
+                <select name="origen">
+                    <option value="movistar">Movistar</option>
+                    <option value="orange">Orange</option>
+                    <option value="vodafone">Vodafone</option>
+                    <option value="yoigo">Yoigo</option>
+                    <option value="ninguna">No tengo ninguna compañía</option>
+                </select>
+               
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br/><br/>
+                En caso de portabilidad, elija la nueva compañía:
+                <select name="origen">
+                    <option value="movistar">Movistar</option>
+                    <option value="orange">Orange</option>
+                    <option value="vodafone">Vodafone</option>
+                    <option value="yoigo">Yoigo</option>
+                </select>
+
+        </fieldset>
+        </div>
+            <br/>
+
+        <div class="formulario_grupo" id="grupo_bancarios">
+        <fieldset>
+                 
+                <legend><b>Datos Bancarios</b></legend> 
+
+                    País:<input id="pais" type="text" name="pais" value="ES" readonly="readonly"/><p><small>(sólo válido ES)</small></p><br/> 
+                    Control IBAN:<input id="iban" type="text" name="control iban" pattern="[0-9]{2}" placeholder="00" required/><p><small>(dos dígitos)</small></p><br/>   
+                    Entidad:<input id="entidad" type="text" name="entidad" pattern="[0-9]{4}" placeholder="0000" required/><p><small>(cuatro dígitos)</small></p><br/>
+                    Sucursal:<input id="sucursal" type="text" name="sucursal" pattern="[0-9]{4}" placeholder="0000" required/><p><small>(cuatro dígitos)</small></p><br/>
+                    DC:<input id="dc" type="text" name="dc" pattern="[0-9]{2}" placeholder="00" required/><p><small>(dos dígitos)</small></p><br/>
+                    Cuenta:<input id="cuenta" type="text" name="cuenta" pattern="[0-9]{10}" placeholder="0000000000" required/><p><small>(diez dígitos)</small></p><br/>
+            
+        </fieldset>
+        </div>
+            <br/>
+
+        <div class="formulario_grupo" id="grupo_estadisticos">
+        <fieldset>
+    
+            <legend><b>Datos Estadísticos - ¿Cómo nos ha conocido?</b></legend>
+    
+            <input type="checkbox" name="datose" value="televisión" checked="checked">A través de la televisión&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="datose" value="radio">A través de la radio&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="datose" value="internet">A través de Internet&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <input type="checkbox" name="datose" value="otros">Otros&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <br/><br/>
+               
+               Valoración [1-5] <p id='valoracion_actual'></p>
+               <input type="range" min="1" max="5" onchange="changeValoracion()" id="Valoracion"> 
+            
+            <br/><br/>
+
+              Fecha de la encuesta: 
+              <input type="date" id="fecha">
+
+        </fieldset>
+        </div>
+
+        <br>
+        <input type="submit" value="Enviar Datos"/>
+        <input type="reset" value="Borrar Datos"/>
+        
+        <br>
+        <button type="button" onclick="mostrarValoracion()"> Mostrar Valoración</button>
+        <button type="button" onclick="mostrarCuenta()"> Mostrar Cuenta Bancaria</button>
+        <button type="button" onclick="mostrarDiaSemana()"> Mostrar Día de la semana</button>
+
+    </form>
+    <footer>
+        <img src="Logotipos.png" alt="Logotipos">
+    </footer>
+    <div id="error"></div>
+ </body>    
+</html>
